@@ -1,0 +1,19 @@
+@import '../../../../../scss/variables';
+@import '../../../../../scss/colours';
+
+.advertisement-widget {
+	padding-top: 12px;
+}
+
+.advertisement__header {
+	background-color: $colour--white;
+	border-bottom: 1px solid $colour--neutral--light;
+	padding: $spacing--small $spacing--medium;
+	min-height: 70px;
+}
+
+.advertisement__content {
+	background-color: $colour--white;
+	max-width: 100vw;
+}
+

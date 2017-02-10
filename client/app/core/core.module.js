@@ -1,7 +1,9 @@
 import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-material';
+import 'angular-messages';
 import 'angular-animate';
+import 'angular-material-data-table';
 import BackendService from './backendService/backendService.module';
 import * as CONSTANTS from './core.constants';
 
@@ -16,6 +18,8 @@ export const coreModule = angular.module('app.core', [
 	// Angular modules
 	'ui.router',
 	'ngMaterial',
+	'ngMessages',
+	'md.data.table',
 	BackendService.name,
 ])
 	.constant('LANGUAGES', CONSTANTS.LANGUAGES)

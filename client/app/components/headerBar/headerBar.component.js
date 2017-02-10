@@ -1,12 +1,17 @@
 import template from './headerBar.html';
-import controller from './headerBar.controller';
+import './_headerBar.scss';
+
+class HeaderBarController {
+	constructor() {
+		this.headerTitle = 'Advertisements';
+	}
+}
 
 const headerBarComponent = {
 	restrict: 'E',
 	bindings: {},
 	template,
-	controller,
-	controllerAs: '$ctrl',
+	controller: HeaderBarController,
 };
 
 export default headerBarComponent;

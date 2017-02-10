@@ -1,0 +1,100 @@
+<div
+	class="advertisement-form"
+	layout="column"
+	flex
+>
+	<div
+		class="advertisement__header"
+		flex="none"
+		layout="row"
+		layout-align="start center"
+	>
+		<div
+			class="md-subhead"
+		>
+			Advertisement
+		</div>
+	</div>
+
+	<md-content class="advertisement__content -no-bg" flex layout="column" layout-padding>
+		<form name="$ctrl.advertisementForm">
+
+			<!--Advertisement Name-->
+			<!--Pattern: (no in beginning)[allowed characters]-->
+			<md-input-container class="md-block">
+				<label>Advertisement name</label>
+				<input
+					ng-model="$ctrl.advertisement.name"
+					required
+					name="name"
+					ng-pattern="/^(?![\s])[a-zA-Z\s0-9_()]+$/"
+					md-maxlength="50"
+					ng-maxlength="50"
+					ng-change="$ctrl.advertisementFormChange()"
+				>
+				<div ng-messages="$ctrl.advertisementForm.name.$error" role="alert" multiple>
+					<div ng-message="required">
+						This is required
+					</div>
+					<div ng-message="pattern">
+						Alphabets and numerals only
+					</div>
+					<div ng-message-exp="['md-maxlength', 'maxlength']">
+						Max length reached
+					</div>
+				</div>
+			</md-input-container>
+
+			<!--Street-->
+			<md-input-container class="md-block">
+				<label>Street</label>
+				<input
+					ng-model="$ctrl.advertisement.customColumnOne"
+					name="street"
+					ng-change="$ctrl.advertisementFormChange()"
+				>
+			</md-input-container>
+
+			<!--Rooms-->
+			<md-input-container class="md-block">
+				<label>Rooms</label>
+				<input
+					ng-model="$ctrl.advertisement.rooms"
+					name="rooms"
+					type="number"
+					ng-change="$ctrl.advertisementFormChange()"
+				>
+			</md-input-container>
+
+			<!--Price-->
+			<md-input-container class="md-block">
+				<label>Price</label>
+				<input
+					required
+					ng-model="$ctrl.advertisement.price"
+					name="price"
+					ng-pattern="/^(([^0]{1})([0-9])*|(0{1}))(\,\d{2}){0,1}$/"
+					ng-change="$ctrl.advertisementFormChange()"
+				>
+				<div ng-messages="$ctrl.advertisementForm.price.$error" role="alert">
+					<div ng-message="required">
+						This is required
+					</div>
+					<div ng-message="pattern">
+						Invalid price(Valid currency in euros: 12,12)
+					</div>
+				</div>
+			</md-input-container>
+
+			<!--Status-->
+			<md-checkbox
+				md-no-ink
+				ng-model="$ctrl.advertisement.status"
+				class="md-primary"
+				ng-change="$ctrl.advertisementFormChange()"
+			>
+				Status
+			</md-checkbox>
+		</form>
+	</md-content>
+</div>

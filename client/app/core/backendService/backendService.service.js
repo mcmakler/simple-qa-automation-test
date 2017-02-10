@@ -17,14 +17,31 @@ class BackendService {
 	 * @methodOf backendService.service:BackendService
 	 *
 	 * @description
-	 * Search address using google geocode api.
+	 * Get all advertisements
 	 *
-	 * @returns {Promise} an $http promise Object resolving an Object containing search results
+	 * @returns {Promise} an $http promise Object resolving an Array containing advertisement results
 	 */
 	getAdvertisements() {
 		return this.$http({
 			method: 'GET',
 			url: `${this.baseUri}/advertisements`,
+		});
+	}
+
+	getAdvertisement(advertisementId) {
+		return this.$http({
+			method: 'GET',
+			url: `${this.baseUri}/advertisements/${advertisementId}`,
+		});
+	}
+
+	saveAdvertisement(advertisement) {
+		const method = advertisement.id ? 'PUT' : 'POST',
+			url = `${this.baseUri}/advertisements${advertisement.id ? '/' + advertisement.id : ''}`;
+
+		return this.$http({
+			method,
+			url,
 		});
 	}
 }

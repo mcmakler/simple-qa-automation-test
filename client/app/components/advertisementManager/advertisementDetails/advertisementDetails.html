@@ -1,0 +1,32 @@
+<div class="advertisement-details" layout="column" flex>
+	<div class="ul-card" flex layout="column">
+		<advertisement-form
+			on-init="$ctrl.initAdvertisementForm(advertisementForm)"
+			on-change="$ctrl.advertisementFormChange(advertisementForm)"
+			advertisement="$ctrl.advertisement"
+		>
+		</advertisement-form>
+
+		<div
+			flex="none"
+			layout="row"
+			layout-align="end center"
+		>
+			<md-button
+				class="md-primary"
+				md-no-ink
+				ng-click="$ctrl.cancel()"
+			>
+				cancel
+			</md-button>
+			<md-button
+				class="md-primary"
+				md-no-ink
+				ng-disabled="$ctrl.disableSave"
+				ng-click="$ctrl.saveAdvertisementDetails()"
+			>
+				save
+			</md-button>
+		</div>
+	</div>
+</div>

@@ -3,7 +3,77 @@ import Advertisement from './Advertisement';
 const advertisementManagerConfig = ($stateProvider) => {
 
 	$stateProvider
-	// List Advertisements
+		.state('advertisementDetails', {
+			url: '/advertisement',
+			abstract: true,
+		})
+
+		// Add advertisement
+		.state('advertisementDetails.new', {
+			url: '/new',
+			title: 'Add advertisement',
+			views: {
+				'@': {
+					template: `
+						<advertisement-details
+							flex
+							layout="column"
+							advertisement="$ctrl.advertisement"
+							is-edit="$ctrl.isEdit"
+						>
+						</advertisement-details>
+					`,
+					controller: function() {
+						'ngInject';
+
+						this.advertisement = new Advertisement();
+						this.isEdit = false;
+					},
+					controllerAs: '$ctrl',
+				},
+			},
+		})
+
+		// Edit advertisement
+		.state('advertisementDetails.edit', {
+			url: '/:advertisementId/edit',
+			title: 'Edit Advertisement',
+			views: {
+				'@': {
+					template: `
+						<advertisement-details
+							flex
+							layout="column"
+							company="$ctrl.company"
+							configs="$ctrl.configs"
+							is-edit="$ctrl.isEdit"
+						>
+						</advertisement-details>
+					`,
+					controller: function(advertisement) {
+						'ngInject';
+
+						this.advertisement = new Advertisement(advertisement);
+						this.isEdit = true;
+					},
+					controllerAs: '$ctrl',
+				},
+			},
+			resolve: {
+				advertisement: function(BackendService, $stateParams) {
+					'ngInject';
+
+					return BackendService
+						.getAdvertisement($stateParams.advertisementId)
+						.then(response => response.data)
+						.catch((err) => {
+							console.log(`something went wrong`);
+						});
+				},
+			},
+		})
+
+		// List Advertisements
 		.state('advertisementList', {
 			resolve: {
 				advertisements: function(BackendService) {
