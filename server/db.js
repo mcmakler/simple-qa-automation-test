@@ -1,6 +1,8 @@
-const loki = require('lokijs');
+const Datastore = require('nedb');
 
-const db = new loki('db/db.json');
+const db = {};
+
+db.advertisements = new Datastore({ filename: 'db/advertisements.db', autoload: true });
 
 module.exports = db;
 

@@ -1,8 +1,8 @@
 class Advertisement {
-	constructor({ id, advertisementName, street, rooms, price, status} = {}) {
+	constructor({ _id, name, street, rooms, price, status} = {}) {
 
-		this.id = id;
-		this.advertisementName = advertisementName;
+		this._id = _id;
+		this.name = name;
 		this.street = street;
 		this.rooms = rooms;
 		this.price = price;

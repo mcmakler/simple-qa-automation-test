@@ -36,12 +36,14 @@ class BackendService {
 	}
 
 	saveAdvertisement(advertisement) {
-		const method = advertisement.id ? 'PUT' : 'POST',
-			url = `${this.baseUri}/advertisements${advertisement.id ? '/' + advertisement.id : ''}`;
+		console.log(advertisement);
+		const method = advertisement._id ? 'PUT' : 'POST',
+			url = `${this.baseUri}/advertisements${advertisement._id ? '/' + advertisement._id : ''}`;
 
 		return this.$http({
 			method,
 			url,
+			data: advertisement,
 		});
 	}
 }
