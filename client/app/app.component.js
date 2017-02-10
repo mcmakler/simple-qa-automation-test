@@ -1,4 +1,5 @@
 import template from './app.html';
+import './_app.scss';
 /**
  * @ngdoc component
  * @name _app.component:appDirective
@@ -12,10 +13,11 @@ import template from './app.html';
  * <app></app>
  *
  */
-export const AppComponent = {
-	restrict: 'E',
-	template: template,
-	replace: true,
+export const AppDirective = function() {
+	return {
+		restrict: 'E',
+		template: template,
+		replace: true,
+	};
 };
-
 

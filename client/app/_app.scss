@@ -1,0 +1,56 @@
+@import '../scss/variables';
+@import '../scss/colours';
+
+html,
+body,
+.app {
+	min-width: 320px;
+	background: $colour--bg;
+	font-family: $font--primary;
+	color: $colour--text;
+}
+
+.app {
+	position: relative;
+	height: 100%;
+	overflow: hidden; // scrolling is on the content level to prevent jumps to the top with other elements
+	z-index: 1;
+}
+
+// set positioning contexts with the correct layering
+
+.app__header {
+	position: relative;
+	z-index: 2;
+}
+
+.app__content {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.app__view {
+	position: relative;
+	overflow-y: auto;
+	z-index: 1;
+	padding: $spacing--small;
+
+}
+
+.app__aside {
+	position: relative;
+	z-index: 2;
+}
+
+/**
+ * Hide unused features
+ *
+ */
+.app__ui__components {
+	&--hide {
+		display: none;
+	}
+}
+

@@ -1,6 +1,8 @@
 import angular from 'angular';
 import 'angular-ui-router';
+import 'angular-material';
 import 'angular-animate';
+import BackendService from './backendService/backendService.module';
 import * as CONSTANTS from './core.constants';
 
 /**
@@ -13,7 +15,8 @@ import * as CONSTANTS from './core.constants';
 export const coreModule = angular.module('app.core', [
 	// Angular modules
 	'ui.router',
-	'ngAnimate',
+	'ngMaterial',
+	BackendService.name,
 ])
 	.constant('LANGUAGES', CONSTANTS.LANGUAGES)
 	.constant('DEFAULT_LANGUAGE', CONSTANTS.DEFAULT_LANGUAGE);

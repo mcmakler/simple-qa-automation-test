@@ -1,8 +1,12 @@
 import angular from 'angular';
 import { coreModule } from './core/core.module';
 
+// Components
+import { headerBar } from './components/headerBar/headerBar.module';
+import { advertisementManager } from './components/advertisementManager/advertisementManager.module';
+
 // Construct Module
-import { AppComponent } from './app.component';
+import { AppDirective } from './app.component';
 import { appConfig as config } from './app.config';
 
 /**
@@ -16,8 +20,10 @@ import { appConfig as config } from './app.config';
 const appModule = angular.module('app', [
 	// Core
 	coreModule.name,
+	headerBar.name,
+	advertisementManager.name,
 ])
-	.component('app', AppComponent)
+	.directive('app', AppDirective)
 	.config(config);
 
 export default appModule;

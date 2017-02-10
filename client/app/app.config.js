@@ -9,12 +9,16 @@
  */
 export const appConfig = function(
 	$urlRouterProvider,
-	$locationProvider) {
+	$locationProvider,
+	$mdThemingProvider) {
 	'ngInject';
 
 	$locationProvider.html5Mode(true);
 
 	$urlRouterProvider
-		.when('', '/')
-		.otherwise('/');
+		.when('', '/advertisements')
+		.otherwise('/advertisements');
+
+	$mdThemingProvider.theme('default')
+		.primaryPalette('amber');
 };

@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const SassLintPlugin = require('sasslint-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
 
-const backendServerUrl = process.env.BACKEND_SERVER_URL || '';
+const backendServerUrl = process.env.BACKEND_SERVER_URL || 'http://localhost:3000';
 const proxy = {
 	'/api/**/*': {
 		target: backendServerUrl,
