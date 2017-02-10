@@ -7,7 +7,7 @@ import './_app.scss';
  * @restrict E
  *
  * @description
- *  The root component for the application
+ *  The root directive for the application
  *
  * @usage
  * <app></app>

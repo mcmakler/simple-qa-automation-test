@@ -1,5 +1,3 @@
-/*eslint-env node */
-
 const COVERAGE_ENABLED = !!process.env.COVERAGE_ENABLED;
 const WATCH_MODE = !!process.env.WATCH_MODE;
 
@@ -72,6 +70,9 @@ module.exports = function(config) {
 				}, {
 					test: /\.(jpe?g|png|eot|woff|ttf|gif|svg)(\?.*)?$/i,
 					use: 'url-loader',
+				}, {
+					test: /\.css$|\.scss$/,
+					use: ['raw-loader', 'sass-loader'],
 				}],
 			},
 		},
