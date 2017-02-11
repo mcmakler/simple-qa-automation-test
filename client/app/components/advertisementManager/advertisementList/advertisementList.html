@@ -9,5 +9,34 @@
 				</md-button>
 			</span>
 		</header>
+		<md-table-container>
+			<table md-table>
+				<thead md-head md-order="$ctrl.orderBy">
+				<tr md-row>
+					<th md-column md-order-by="name"><span>Advertisement name</span></th>
+					<th md-column><span>Street</span></th>
+					<th md-column>Rooms</th>
+					<th md-column md-numeric>Price</th>
+					<th md-column>Status</th>
+				</tr>
+				</thead>
+				<tbody md-body>
+				<tr
+					md-row
+					ng-click="$ctrl.rowClick(advertisement)"
+					md-select="advertisement"
+					md-select-id="name"
+					md-auto-select
+					ng-repeat="advertisement in $ctrl.advertisements | orderBy: $ctrl.orderBy">
+
+					<td md-cell>{{advertisement.name}}</td>
+					<td md-cell>{{advertisement.street}}</td>
+					<td md-cell>{{advertisement.rooms}}</td>
+					<td md-cell>{{advertisement.price | currency}}</td>
+					<td md-cell>{{advertisement.status? 'Active' : 'Inactive'}}</td>
+				</tr>
+				</tbody>
+			</table>
+		</md-table-container>
 	</div>
 </div>

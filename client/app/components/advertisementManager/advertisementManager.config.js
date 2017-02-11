@@ -36,7 +36,7 @@ const advertisementManagerConfig = ($stateProvider) => {
 
 		// Edit advertisement
 		.state('advertisementDetails.edit', {
-			url: '/:advertisementId/edit',
+			url: '/:id/edit',
 			title: 'Edit Advertisement',
 			views: {
 				'@': {
@@ -44,8 +44,7 @@ const advertisementManagerConfig = ($stateProvider) => {
 						<advertisement-details
 							flex
 							layout="column"
-							company="$ctrl.company"
-							configs="$ctrl.configs"
+							advertisement="$ctrl.advertisement"
 							is-edit="$ctrl.isEdit"
 						>
 						</advertisement-details>
@@ -64,7 +63,7 @@ const advertisementManagerConfig = ($stateProvider) => {
 					'ngInject';
 
 					return BackendService
-						.getAdvertisement($stateParams.advertisementId)
+						.getAdvertisement($stateParams.id)
 						.then(response => response.data)
 						.catch((err) => {
 							console.log(`something went wrong`);

@@ -3,6 +3,7 @@ import 'angular-ui-router';
 import 'angular-material';
 import 'angular-messages';
 import 'angular-animate';
+import 'angular-i18n/de-de';
 import 'angular-material-data-table';
 import BackendService from './backendService/backendService.module';
 import * as CONSTANTS from './core.constants';
@@ -21,6 +22,4 @@ export const coreModule = angular.module('app.core', [
 	'ngMessages',
 	'md.data.table',
 	BackendService.name,
-])
-	.constant('LANGUAGES', CONSTANTS.LANGUAGES)
-	.constant('DEFAULT_LANGUAGE', CONSTANTS.DEFAULT_LANGUAGE);
+]);

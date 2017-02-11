@@ -36,7 +36,6 @@ class BackendService {
 	}
 
 	saveAdvertisement(advertisement) {
-		console.log(advertisement);
 		const method = advertisement._id ? 'PUT' : 'POST',
 			url = `${this.baseUri}/advertisements${advertisement._id ? '/' + advertisement._id : ''}`;
 

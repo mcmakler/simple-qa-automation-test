@@ -12,8 +12,8 @@ advertisementsRouter.get('/', (req, res) => {
 });
 
 advertisementsRouter.get('/:id', (req, res) => {
-	db.advertisements.findOne({ _id: req.params.id }, (err, docs) => {
-		res.json(docs);
+	db.advertisements.findOne({ _id: req.params.id }, (err, doc) => {
+		res.json(doc);
 	});
 });
 
