@@ -21,7 +21,7 @@ advertisementsRouter.get('/:id', (req, res) => {
 
 advertisementsRouter.post('/', jsonParser, (req, res) => {
 	db.advertisements.insert(req.body, (err, doc) => {
-		advertisementEventEmitter.emit('add:advertisement');
+		advertisementEventEmitter.emit('event:add:advertisement', req.get('userId'));
 		res.json(doc);
 	});
 });

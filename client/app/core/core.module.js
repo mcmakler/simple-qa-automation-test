@@ -5,9 +5,11 @@ import 'angular-messages';
 import 'angular-animate';
 import 'angular-i18n/de-de';
 import 'angular-material-data-table';
-import io from 'socket.io-client';
 import 'angular-socket-io';
+
 import BackendService from './backendService/backendService.module';
+import { SocketService } from './socketService/socketService';
+import { userIdInterceptor } from './userIdInterceptorConfig/userIdInterceptor.config';
 
 /**
  * @ngdoc overview
@@ -26,8 +28,5 @@ export const coreModule = angular.module('app.core', [
 
 	BackendService.name,
 ])
-	.factory('socket', (socketFactory) => {
-		return socketFactory({
-			ioSocket: io('http://localhost:3000'),
-		});
-	});
+	.config(userIdInterceptor)
+	.service('SocketService', SocketService);
