@@ -78,7 +78,7 @@ class AdvertisementDetailsController {
 				.simple()
 				.textContent(description)
 				.position('top right')
-				.theme('success-toast')
+				.theme('default')
 				.hideDelay(2000)
 		);
 	}

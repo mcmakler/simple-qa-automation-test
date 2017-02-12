@@ -3,6 +3,8 @@ const advertisementsRouter = new Router();
 const bodyParser = require('body-parser');
 
 const db = require('../../db');
+const advertisementEventEmitter = require('../../AdvertisementEventEmitter');
+
 const jsonParser = bodyParser.json();
 
 advertisementsRouter.get('/', (req, res) => {
@@ -19,6 +21,7 @@ advertisementsRouter.get('/:id', (req, res) => {
 
 advertisementsRouter.post('/', jsonParser, (req, res) => {
 	db.advertisements.insert(req.body, (err, doc) => {
+		advertisementEventEmitter.emit('add:advertisement');
 		res.json(doc);
 	});
 });

@@ -5,8 +5,9 @@ import 'angular-messages';
 import 'angular-animate';
 import 'angular-i18n/de-de';
 import 'angular-material-data-table';
+import io from 'socket.io-client';
+import 'angular-socket-io';
 import BackendService from './backendService/backendService.module';
-import * as CONSTANTS from './core.constants';
 
 /**
  * @ngdoc overview
@@ -21,5 +22,12 @@ export const coreModule = angular.module('app.core', [
 	'ngMaterial',
 	'ngMessages',
 	'md.data.table',
+	'btford.socket-io',
+
 	BackendService.name,
-]);
+])
+	.factory('socket', (socketFactory) => {
+		return socketFactory({
+			ioSocket: io('http://localhost:3000'),
+		});
+	});

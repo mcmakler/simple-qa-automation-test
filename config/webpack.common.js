@@ -29,6 +29,14 @@ module.exports = {
 		proxy,
 		inline: true,
 	},
+	resolve: {
+		alias: {
+			'socket.io-client': 'socket.io-client/dist/socket.io.js',
+		},
+		modules: [
+			'node_modules'
+		]
+	},
 	plugins: [
 		new SassLintPlugin({
 			glob: 'client/**/*.scss',
