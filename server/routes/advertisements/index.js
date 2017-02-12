@@ -28,6 +28,7 @@ advertisementsRouter.post('/', jsonParser, (req, res) => {
 
 advertisementsRouter.put('/:id', jsonParser, (req, res) => {
 	db.advertisements.update({ _id: req.params.id }, req.body, (err, doc) => {
+		advertisementEventEmitter.emit('event:edit:advertisement', req.get('userId'));
 		res.json(doc);
 	});
 });

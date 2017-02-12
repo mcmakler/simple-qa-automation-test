@@ -11,7 +11,13 @@ class AdvertisementListController {
 		this.$scope = $scope;
 
 		SocketService.socket.forward('add:advertisement', this.$scope);
+		SocketService.socket.forward('edit:advertisement', this.$scope);
+
 		this.$scope.$on('socket:add:advertisement', () => {
+			this.showRefreshToast();
+		});
+
+		this.$scope.$on('socket:edit:advertisement', () => {
 			this.showRefreshToast();
 		});
 	}
@@ -21,13 +27,13 @@ class AdvertisementListController {
 	}
 
 	showRefreshToast(
-		description = 'Reload list'
+		description = 'List changed'
 	) {
 		return this.$mdToast.show(
 			this.$mdToast
 				.simple()
 				.textContent(description)
-				.action('Refresh')
+				.action('Reload')
 				.highlightAction(true)
 				.position('top right')
 				.theme('default')

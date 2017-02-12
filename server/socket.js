@@ -9,13 +9,13 @@ class AdvertisementSocket {
 		this.socket.userId = userId;
 	}
 
-	static emitAddAdvertisement(fromUserId, io) {
+	static emitAdvertisementEvent({ fromUserId, io, eventName }) {
 		Object.keys(io.sockets.sockets)
 			.filter((socketId) => {
 				return io.sockets.sockets[socketId].userId !== fromUserId;
 			})
 			.forEach((socketId) => {
-				io.sockets.sockets[socketId].emit('add:advertisement');
+				io.sockets.sockets[socketId].emit(eventName);
 			});
 	}
 }
@@ -25,7 +25,19 @@ module.exports = function(server) {
 	const io = require('socket.io')(server);
 
 	advertisementEventEmitter.on('event:add:advertisement', (fromUserId) => {
-		AdvertisementSocket.emitAddAdvertisement(fromUserId, io);
+		AdvertisementSocket.emitAdvertisementEvent({
+			fromUserId,
+			io,
+			eventName: 'add:advertisement'
+		});
+	});
+
+	advertisementEventEmitter.on('event:edit:advertisement', (fromUserId) => {
+		AdvertisementSocket.emitAdvertisementEvent({
+			fromUserId,
+			io,
+			eventName: 'edit:advertisement'
+		});
 	});
 
 	io.on('connection',  (socket) => {
