@@ -17,7 +17,7 @@
     "dev-install": "npm install phantomjs-prebuilt karma-phantomjs-launcher",
     "test-run": "cross-env WATCH_MODE=false karma run -- --grep",
     "prepush": "sass-lint -c .sass-lint.yml -v -q -s scss 'client/**/*.scss' && eslint \"client/**/*.js\" && npm run test",
-    "heroku-postbuild": "npm run build-client"
+    "heroku-postbuild": "npm run build-client-no-tests"
   },
   "repository": {
     "type": "git"
