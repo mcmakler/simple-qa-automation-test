@@ -10,3 +10,7 @@ To build the application on you own machine follow these steps:
 
 1. [Setup](https://github.com/mcmakler/simple-qa-automation-test/wiki/Setup)
 1. [Build and run the application](https://github.com/mcmakler/simple-qa-automation-test/wiki/Build-&-Run)
+
+***
+
+### Looking for a new challenge? [Apply now and join our team!](https://www.mcmakler.de/karriere#jobs)
