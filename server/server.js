@@ -9,7 +9,10 @@ const server = require('http').createServer(app);
 require('./socket')(server);
 
 const routes = require('./routes');
-const LIST_APP_PORT = process.env.LIST_APP_PORT || 3000;
+
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+const LIST_APP_PORT = process.env.PORT || 3000;
 
 //Connect all our routes to our application
 app.use('/api', routes);
