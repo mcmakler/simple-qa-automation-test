@@ -33,4 +33,20 @@ advertisementsRouter.put('/:id', jsonParser, (req, res) => {
 	});
 });
 
+advertisementsRouter.get('/db/drop', (req, res) => {
+	if (!req.query.confirm) {
+		res.json({
+			message: 'Confirm by passing query param ?confirm'
+		});
+
+		return;
+	}
+
+	db.advertisements.remove({}, { multi: true }, () => {
+		res.json({
+			message: 'advertisement db dropped'
+		});
+	})
+});
+
 module.exports = advertisementsRouter;
