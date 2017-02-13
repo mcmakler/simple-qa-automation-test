@@ -4,8 +4,14 @@ export class SocketService {
 	constructor(socketFactory, $window) {
 		'ngInject';
 
+		let socketUrl = 'http://localhost:3000';
+
+		if (process.env.NODE_ENV === 'production') {
+			socketUrl = '';
+		}
+
 		this.socket = socketFactory({
-			ioSocket: io('http://localhost:3000'),
+			ioSocket: io(socketUrl),
 		});
 
 		this.userId = $window.sessionStorage.getItem('socket:userId') || this.generateUserId();

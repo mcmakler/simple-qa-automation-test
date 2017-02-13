@@ -1,5 +1,6 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 
 // webpack plugins
@@ -14,6 +15,9 @@ module.exports = webpackMerge(commonConfig, {
 	},
 
 	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('production'),
+		}),
 		new DedupePlugin(),
 		new UglifyJsPlugin({
 			mangle: true,

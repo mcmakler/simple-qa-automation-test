@@ -10,7 +10,6 @@ const backendServerUrl = process.env.BACKEND_SERVER_URL || 'http://localhost:300
 const proxy = {
 	'/api/**/*': {
 		target: backendServerUrl,
-		pathRewrite: {'^/api': ''},
 	},
 };
 
@@ -34,8 +33,8 @@ module.exports = {
 			'socket.io-client': 'socket.io-client/dist/socket.io.js',
 		},
 		modules: [
-			'node_modules'
-		]
+			'node_modules',
+		],
 	},
 	plugins: [
 		new SassLintPlugin({

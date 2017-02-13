@@ -8,6 +8,7 @@
 class BackendService {
 	constructor($http) {
 		'ngInject';
+
 		this.$http = $http;
 		this.baseUri = 'api';
 	}

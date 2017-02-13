@@ -1,4 +1,6 @@
 export const userIdInterceptor = function($httpProvider) {
+	'ngInject';
+
 	// Push Auth Interceptor
 	$httpProvider.interceptors.push(($q, $window) => {
 

@@ -1,6 +1,7 @@
 import Advertisement from './Advertisement';
 
-const advertisementManagerConfig = ($stateProvider) => {
+const advertisementManagerConfig = function($stateProvider) {
+	'ngInject';
 
 	$stateProvider
 		.state('advertisementDetails', {
@@ -24,7 +25,6 @@ const advertisementManagerConfig = ($stateProvider) => {
 						</advertisement-details>
 					`,
 					controller: function() {
-						'ngInject';
 
 						this.advertisement = new Advertisement();
 						this.isEdit = false;
